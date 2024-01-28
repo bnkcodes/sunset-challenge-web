@@ -7,7 +7,6 @@ import magnifierQuestion from '../../../assets/svgs/magnifier-question.svg';
 import { TaskCard } from "../../components/TaskCard";
 import { Pagination } from "../../components/Pagination";
 import { SearchBar } from "../../components/SearchBar";
-import { Spinner } from '../../components/Spinner';
 import { Button } from '../../components/Button';
 
 import { useTasksController } from "./useTasksController";
@@ -63,14 +62,6 @@ export function Tasks() {
       <div
         className='mx-auto max-w-2xl pt-8 pb-12 px-2 justify-center gap-3 grid grid-cols-1 relative'
       >
-        {(isFetching && isNotFirstLoading) && (
-          <div
-            className="absolute inset-0 w-full h-full z-40 bg-gray-50 bg-opacity-70 flex items-center justify-center"
-          >
-            <Spinner />
-          </div>
-        )}
-    
         {!isNotFirstLoading && 
           Array.from(Array(3).keys()).map(() => (
             <Skeleton key={Math.random()} className='w-full' height="150px" />

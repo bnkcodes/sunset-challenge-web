@@ -7,7 +7,7 @@ import { Task } from "../../app/entities/Task";
 
 import { ListMenu } from './ListMenu';
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { tasksService } from "../../app/services/tasksService";
 import { requestError } from "../../app/utils/requestError";
 import { Spinner } from "./Spinner";
@@ -30,11 +30,14 @@ export function TaskCard({
 }: TaskCardProps) {
   const [isChecked, setIsChecked] = useState(isCompleted ?? false);
 
+  const queryClient = useQueryClient(); 
+
   const {
     mutate: uncheckMutate,
     isPending: isUncheckPending
   } = useMutation({
     mutationFn: () => tasksService.uncheck(id as string),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks'] }),
     onError: (error) => requestError(error)
   });
 
@@ -43,6 +46,7 @@ export function TaskCard({
     isPending: isDonePending
   } = useMutation({
     mutationFn: () => tasksService.done(id as string),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks'] }),
     onError: (error) => requestError(error)
   });
 

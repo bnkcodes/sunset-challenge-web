@@ -25,7 +25,6 @@ export function useTasksController() {
     queryKey: ['tasks', params],
     queryFn: async () => tasksService.getAll(params),
     placeholderData: keepPreviousData,
-    refetchOnWindowFocus: true,
   });
 
   function handleCreate() {
