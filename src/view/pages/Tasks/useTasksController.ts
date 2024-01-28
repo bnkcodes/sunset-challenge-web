@@ -32,17 +32,13 @@ export function useTasksController() {
   });
 
   const { mutate: uncheckMutate } = useMutation({
-    mutationFn: async (id: string) => {
-      return tasksService.uncheck(id)
-    },
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks'] }),
+    mutationFn: async (id: string) => tasksService.uncheck(id),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks', params] }),
   });
 
   const { mutate: doneMutate } = useMutation({
-    mutationFn: async (id: string) => {
-      return tasksService.done(id)
-    },
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks'] }),
+    mutationFn: async (id: string) => tasksService.done(id),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks', params] }),
   });
 
   function handleCreate() {
