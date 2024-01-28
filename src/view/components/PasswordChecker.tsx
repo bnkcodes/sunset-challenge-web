@@ -33,7 +33,7 @@ const criteriaList: PasswordCriteria[] = [
 
 type PasswordCheckerProps = {
   password: string,
-  className: string
+  className?: string
 }
 
 export default function PasswordChecker({ password, className }: PasswordCheckerProps) {
