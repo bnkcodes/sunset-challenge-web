@@ -43,6 +43,7 @@ export function Register() {
           error={errors.name?.message}
           {...register('name')}
         />
+
         <Input
           placeholder="E-mail"
           error={errors.email?.message}
