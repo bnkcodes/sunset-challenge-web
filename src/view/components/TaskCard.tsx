@@ -7,11 +7,14 @@ import { Task } from "../../app/entities/Task";
 
 import { ListMenu } from './ListMenu';
 import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { tasksService } from "../../app/services/tasksService";
+import { requestError } from "../../app/utils/requestError";
+import { Spinner } from "./Spinner";
 
 interface TaskCardProps extends Partial<Task> {
   disabled?: boolean;
   onEdit: () => void;
-  onToggle: (isChecked: boolean) => void;
   onDelete: () => void;
 }
 
@@ -22,11 +25,39 @@ export function TaskCard({
   isCompleted,
   createdAt,
   disabled,
-  onToggle: handleToggle,
   onEdit: handleEdit,
   onDelete: handleDelete
 }: TaskCardProps) {
   const [isChecked, setIsChecked] = useState(isCompleted ?? false);
+
+  const {
+    mutate: uncheckMutate,
+    isPending: isUncheckPending
+  } = useMutation({
+    mutationFn: () => tasksService.uncheck(id as string),
+    onError: (error) => requestError(error)
+  });
+
+  const {
+    mutate: doneMutate,
+    isPending: isDonePending
+  } = useMutation({
+    mutationFn: () => tasksService.done(id as string),
+    onError: (error) => requestError(error)
+  });
+
+  function handleChangeStatus(isCompleted: boolean) {
+    const type = isCompleted ? 'uncheck' : 'done';
+    
+    const actions = {
+      uncheck: () => uncheckMutate(),
+      done: () => doneMutate(),
+    }
+
+    actions[type]()
+  }
+
+  const isPending = isUncheckPending || isDonePending;
 
   return (
     <div
@@ -39,16 +70,23 @@ export function TaskCard({
     >
       <div className="flex w-full justify-between gap-1">
         <div className="flex items-center gap-3">
-          <input
-            id="link-checkbox"
-            type="checkbox"
-            checked={isChecked}
-            onChange={(e) => {
-              handleToggle(isChecked)
-              setIsChecked(e.target.checked)
-            }}
-            className="h-4 w-4 rounded-lg text-sm accent-green-500 focus:ring-2 focus:ring-green-500 cursor-pointer"
-          />
+          {isPending && (
+            <Spinner className='w-5 h-5' />
+          )}
+
+          {!isPending && (
+            <input
+              id="link-checkbox"
+              type="checkbox"
+              checked={isChecked}
+              onChange={(e) => {
+                handleChangeStatus(isChecked)
+                setIsChecked(e.target.checked)
+              }}
+              className="h-4 w-4 rounded-lg text-sm accent-green-500 focus:ring-2 focus:ring-green-500 cursor-pointer"
+            />
+          )}
+          
           <label
             htmlFor="link-checkbox"
             className="text-gray-800 font-semibold break-all text-left text-base"

@@ -8,7 +8,7 @@ export function PrivateLayout() {
   return (
     <div className="w-full h-full flex flex-col">
       <header className="flex items-center justify-between px-10 py-2">
-        <Link to="/dashboard">
+        <Link to="/">
           <img 
             src={logoIcon}
             alt="Sunset"

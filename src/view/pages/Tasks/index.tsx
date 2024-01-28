@@ -29,7 +29,6 @@ export function Tasks() {
     setParams,
     handleCreate,
     handleEdit,
-    handleChangeStatus,
     handleDelete,
   } = useTasksController()
 
@@ -96,16 +95,13 @@ export function Tasks() {
           items?.map((list) => (
             <TaskCard
               key={list.id}
+              id={list.id}
               title={list.title}
               description={list.description}
               isCompleted={list.isCompleted}
               createdAt={list.createdAt}
               onEdit={() => handleEdit(list)}
               onDelete={() => handleDelete(list)}
-              onToggle={(value) => handleChangeStatus({
-                id: list.id,
-                isCompleted: value
-              })}
             />
         ))}
       </div>

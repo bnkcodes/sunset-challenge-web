@@ -6,7 +6,7 @@ export function useNotFoundController() {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate(signedIn ? "/dashboard" : '/', {
+    navigate(signedIn ? "/" : '/login', {
       replace: true
     })
   }

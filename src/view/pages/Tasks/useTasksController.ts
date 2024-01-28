@@ -1,19 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { QueryClient, keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import debounce from 'lodash.debounce'
 
 import { tasksService } from "../../../app/services/tasksService";
-import { requestError } from "../../../app/utils/requestError";
-import { Task } from "../../../app/entities/Task";
 
 import { TaskDeleteAlertRef, TaskDeleteAlertData } from "./components/TaskDeleteAlert";
 import { TaskFormModalRef, TaskFormModalData } from "./components/TaskFormModal";
 
 export function useTasksController() {
   const { id: columnId } = useParams();
-
-  const queryClient = new QueryClient();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [params, setParams] = useState({
@@ -29,16 +25,7 @@ export function useTasksController() {
     queryKey: ['tasks', params],
     queryFn: async () => tasksService.getAll(params),
     placeholderData: keepPreviousData,
-  });
-
-  const { mutate: uncheckMutate } = useMutation({
-    mutationFn: async (id: string) => tasksService.uncheck(id),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks', params] }),
-  });
-
-  const { mutate: doneMutate } = useMutation({
-    mutationFn: async (id: string) => tasksService.done(id),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks', params] }),
+    refetchOnWindowFocus: true,
   });
 
   function handleCreate() {
@@ -53,25 +40,9 @@ export function useTasksController() {
     taskDeleteAlertRef.current?.open(taskData);
   }
 
-  function handleChangeStatus({ id, isCompleted }: Partial<Task>) {
-    const type = isCompleted ? 'uncheck' : 'done';
-    
-    const actions = {
-      uncheck: () => uncheckMutate(id as string, {
-        onError: (error) => requestError(error)
-      }),
-
-      done: () => doneMutate(id as string, {
-        onError: (error) => requestError(error)
-      }),
-    }
-
-    actions[type]()
-  }
-
   useEffect(() => {
     const debouncedSave = debounce(() => {
-      setParams((prevState) => ({ ...prevState, page: 1, name: searchTerm }))
+      setParams((prevState) => ({ ...prevState, page: 1, title: searchTerm }))
     }, 500)
 
     debouncedSave()
@@ -94,7 +65,6 @@ export function useTasksController() {
     searchTerm,
     handleCreate,
     handleEdit,
-    handleChangeStatus,
     handleDelete,
     setSearchTerm,
     setParams,
