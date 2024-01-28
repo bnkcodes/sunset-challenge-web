@@ -7,7 +7,7 @@ import { Task } from "../../app/entities/Task";
 
 import { ListMenu } from './ListMenu';
 import { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { tasksService } from "../../app/services/tasksService";
 import { requestError } from "../../app/utils/requestError";
 import { Spinner } from "./Spinner";
