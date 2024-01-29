@@ -36,7 +36,7 @@ export function TaskCard({
     mutate: uncheckMutate,
     isPending: isUncheckPending
   } = useMutation({
-    mutationFn: () => tasksService.uncheck(id as string),
+    mutationFn: () => tasksService.undone(id as string),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks'] }),
     onError: (error) => requestError(error)
   });
@@ -51,10 +51,10 @@ export function TaskCard({
   });
 
   function handleChangeStatus(isCompleted: boolean) {
-    const type = isCompleted ? 'uncheck' : 'done';
+    const type = isCompleted ? 'undone' : 'done';
     
     const actions = {
-      uncheck: () => uncheckMutate(),
+      undone: () => uncheckMutate(),
       done: () => doneMutate(),
     }
 

@@ -2,7 +2,7 @@ import { done } from "./done";
 import { update } from "./update";
 import { create } from "./create";
 import { getAll } from "./getAll";
-import { uncheck } from "./uncheck";
+import { undone } from "./undone";
 import { deleteTask } from "./delete";
 
 export const tasksService = {
@@ -10,6 +10,6 @@ export const tasksService = {
   getAll,
   create,
   update,
-  uncheck,
+  undone,
   delete: deleteTask
 }
