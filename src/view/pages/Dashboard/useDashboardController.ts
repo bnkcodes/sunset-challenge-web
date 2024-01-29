@@ -18,6 +18,7 @@ export function useDashboardController() {
     queryKey: ['lists', params],
     queryFn: async () => listsService.getAll(params),
     placeholderData: keepPreviousData,
+    retry: 2,
   });
 
   function handleCreate() {

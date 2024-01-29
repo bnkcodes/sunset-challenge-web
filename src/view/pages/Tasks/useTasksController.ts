@@ -25,6 +25,7 @@ export function useTasksController() {
     queryKey: ['tasks', params],
     queryFn: async () => tasksService.getAll(params),
     placeholderData: keepPreviousData,
+    retry: 2,
   });
 
   function handleCreate() {
