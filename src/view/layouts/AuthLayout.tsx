@@ -6,16 +6,16 @@ import pneusImg from '../../assets/images/pneus.png';
 export function AuthLayout() {
   return (
     <div className="flex w-full h-full">
-      <div className="w-full h-full flex items-center justify-center flex-col gap-12 lg:w-1/2">
-        <Link to="/">
-          <img 
-            src={logoIcon}
-            alt="Sunset"
-            className='h-[74px] cursor-pointer'
-          />
-        </Link>
-
-        <div className="w-full max-w-[504px] px-8">
+      <div className="w-full h-full flex  lg:w-1/2 overflow-y-auto p-8">
+        <div className="w-full max-w-[504px] flex flex-col gap-12 m-auto">
+          <Link to="/">
+            <img 
+              src={logoIcon}
+              alt="Sunset"
+              className='h-[74px] cursor-pointer mx-auto'
+            />
+          </Link>
+        
           <Outlet />
         </div>
       </div>
