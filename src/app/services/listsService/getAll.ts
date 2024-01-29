@@ -15,7 +15,7 @@ export interface GetAllListsResponse {
 }
 
 export async function getAll({ name, page, perPage }: GetAllListsProps) {
-  const { data } = await httpClient.get<GetAllListsResponse>('/columns', {
+  const { data } = await httpClient.get<GetAllListsResponse>('/lists', {
     params: {
       name,
       page,

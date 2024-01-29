@@ -7,5 +7,5 @@ export interface UpdateParams {
 }
 
 export async function update(id: string, data: UpdateParams) {
-  await httpClient.put<List>(`/columns/${id}`, data);
+  await httpClient.put<List>(`/lists/${id}`, data);
 }

@@ -7,5 +7,5 @@ export interface CreateParams {
 }
 
 export async function create(data: CreateParams) {
-  await httpClient.post<List>('/columns/', data);
+  await httpClient.post<List>('/lists/', data);
 }
