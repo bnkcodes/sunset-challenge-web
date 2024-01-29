@@ -39,11 +39,11 @@ export function Tasks() {
   const renderNotFountMessage = isNotFetching && hasNoItems && searchTerm.length > 0;
  
   return (
-    <div className="h-full bg-gray-50 overflow-y-auto px-4 pb-24 pt-10 md:pb-20">
+    <div className="h-full bg-gray-50 overflow-y-auto p-4 pb-6 md:pt-10 md:pb-20">
       <TaskFormModal ref={taskFormModalRef} />
       <TaskDeleteAlert ref={taskDeleteAlertRef} />
 
-      <div className='w-full max-w-3xl mx-auto flex flex-col gap-8'>
+      <div className='w-full max-w-3xl mx-auto flex flex-col gap-4 md:gap-8'>
         <GoBack title="Tarefas" />
 
         <div className="w-full flex items-center gap-2">
@@ -53,7 +53,7 @@ export function Tasks() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
 
-          <Button className='rounded-lg h-[52px]' onClick={handleCreate}>
+          <Button className='rounded-lg' onClick={handleCreate}>
             <PlusIcon className='w-6 h-6' />
           </Button>
         </div>

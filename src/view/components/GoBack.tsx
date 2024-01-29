@@ -16,7 +16,7 @@ export function GoBack({ title, className, ...props }: GoBackProps) {
       className={cn("flex items-center gap-4", className)}
     >
       <ArrowLeftIcon className="w-5 h-5 text-gray-800" />
-      <p className="text-3xl text-gray-800 font-bold">{title || 'Voltar'}</p>
+      <p className="text-2xl md:text-3xl text-gray-800 font-bold">{title || 'Voltar'}</p>
     </button>
   )
 }

@@ -18,7 +18,7 @@ const Content = React.forwardRef<ContentElement, ContentProps>((props, ref) => {
   const { children, className, ...contentProps } = props
   return (
     <DialogPrimitive.Portal>
-      <DialogPrimitive.Overlay className="fixed inset-0 z-50 grid h-screen w-full place-items-center bg-gray-900/40">
+      <DialogPrimitive.Overlay className="fixed inset-0 z-50 px-3 grid h-screen w-full place-items-center bg-gray-900/40">
         <DialogPrimitive.Content
           {...contentProps}
           className={cn(

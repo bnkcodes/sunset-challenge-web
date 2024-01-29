@@ -24,7 +24,7 @@ export function Profile() {
   } = useProfileController()
  
   return (
-    <div className="h-full bg-gray-50 overflow-y-auto px-4 pb-24 pt-10 md:pb-20">
+    <div className="h-full bg-gray-50 overflow-y-auto p-4 pb-10 md:pt-10 md:pb-20">
       <ChangePasswordFormModal ref={changePasswordModalRef} />
       <DeleteAccountAlert ref={deleteAccountAlertRef} />
 
@@ -33,7 +33,7 @@ export function Profile() {
       </div>
 
       <div
-        className="bg-gray-50 shadow border-2 w-full max-w-2xl mx-auto flex flex-col gap-12 p-8 rounded-lg"
+        className="bg-gray-50 sm:shadow sm:border-2 w-full max-w-2xl mx-auto flex flex-col gap-12 sm:p-8 rounded-lg"
       >
         <ImageProfileUpload />
 

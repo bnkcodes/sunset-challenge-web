@@ -7,7 +7,7 @@ export function PrivateLayout() {
 
   return (
     <div className="w-full h-full flex flex-col">
-      <header className="flex items-center justify-between px-10 py-2">
+      <header className="flex items-center justify-between px-4 md:px-10 py-2">
         <Link to="/">
           <img 
             src={logoIcon}

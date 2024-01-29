@@ -10,7 +10,7 @@ export const SearchBar = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div 
         className={cn(
-          "peer h-[52px] w-full rounded-lg border border-gray-500 bg-white px-3 text-gray-800 outline-none transition-all focus:border-gray-800 flex items-center gap-2",
+          "peer h-[48px] w-full rounded-lg border border-gray-500 bg-white px-3 text-gray-800 outline-none transition-all focus:border-gray-800 flex items-center gap-2",
           className,
         )}
       >

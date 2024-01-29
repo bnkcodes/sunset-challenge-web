@@ -39,12 +39,12 @@ export function Dashboard() {
   const renderNotFountMessage = isNotFetching && hasNoItems && searchTerm.length > 0;
  
   return (
-    <div className="h-full bg-gray-50 overflow-y-auto px-4 pb-24 pt-10 md:pb-20">
+    <div className="h-full bg-gray-50 overflow-y-auto p-4 pb-6 md:pt-10 md:pb-20">
       <ListFormModal ref={listFormModalRef} />
       <ListDeleteAlert ref={listDeleteAlertRef} />
 
       <div className='w-full max-w-5xl mx-auto'>
-        <h1 className='text-3xl text-gray-800 font-bold mb-10'>Minhas listas</h1>
+        <h1 className='text-2xl md:text-3xl text-gray-800 font-bold mb-4 md:mb-10'>Minhas listas</h1>
 
         <div className="w-full flex items-center gap-2">
           <SearchBar
@@ -53,7 +53,7 @@ export function Dashboard() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
 
-          <Button className='rounded-lg h-[52px]' onClick={handleCreate}>
+          <Button className='rounded-lg' onClick={handleCreate}>
             <PlusIcon className='w-6 h-6' />
           </Button>
         </div>
