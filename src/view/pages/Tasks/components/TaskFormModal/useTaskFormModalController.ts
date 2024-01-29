@@ -26,7 +26,7 @@ interface UpdateListMutation {
 }
 
 export function useTaskFormModalController(ref: RefObject<TaskFormModalRef>) {
-  const { id: columnId } = useParams();
+  const { id: listId } = useParams();
 
   const queryClient = useQueryClient()
   
@@ -63,7 +63,7 @@ export function useTaskFormModalController(ref: RefObject<TaskFormModalRef>) {
     const type = itemId ? 'edit' : 'create';
     
     const actions = {
-      create: () => createMutate({ ...formData, columnId: columnId as string }, {
+      create: () => createMutate({ ...formData, listId: listId as string }, {
         onSuccess: () => {
           toast.success('Tarefa editada com sucesso.');
           ref.current?.close();

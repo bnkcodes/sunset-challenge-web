@@ -4,7 +4,7 @@ import { httpClient } from "../httpClient";
 
 interface GetAllTasksProps {
   title?: string;
-  columnId: string;
+  listId: string;
   page?: number;
   perPage?: number;
   orderBy?: string;
@@ -15,10 +15,10 @@ export interface GetAllTasksResponse {
   pagination: Pagonation
 }
 
-export async function getAll({ title, columnId, page, perPage }: GetAllTasksProps) {
+export async function getAll({ title, listId, page, perPage }: GetAllTasksProps) {
   const { data } = await httpClient.get<GetAllTasksResponse>('/tasks', {
     params: {
-      columnId,
+      listId,
       title,
       page,
       perPage

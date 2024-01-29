@@ -1,6 +1,6 @@
 export interface Task {
   id: string;
-  columnId?: string;
+  listId?: string;
   title: string;
   description: string;
   isCompleted: boolean;

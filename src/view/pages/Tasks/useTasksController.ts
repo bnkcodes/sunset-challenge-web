@@ -9,13 +9,13 @@ import { TaskDeleteAlertRef, TaskDeleteAlertData } from "./components/TaskDelete
 import { TaskFormModalRef, TaskFormModalData } from "./components/TaskFormModal";
 
 export function useTasksController() {
-  const { id: columnId } = useParams();
+  const { id: listId } = useParams();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [params, setParams] = useState({
     page: 1,
     title: '',
-    columnId: columnId as string
+    listId: listId as string
    });
 
   const taskDeleteAlertRef = useRef<TaskDeleteAlertRef>(null);

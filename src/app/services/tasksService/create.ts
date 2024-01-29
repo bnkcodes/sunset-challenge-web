@@ -3,7 +3,7 @@ import { httpClient } from "../httpClient";
 
 export interface CreateTaskParams {
   title: string;
-  columnId: string;
+  listId: string;
   description?: string;
 }
 
