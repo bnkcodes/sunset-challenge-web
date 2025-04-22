@@ -4,6 +4,8 @@
   <img src="https://i.ibb.co/kch2SVb/sunset-logo.png" alt="Sunset Logo" width="200" />
 </p>
 
+> Frontend for Sunset's technical assessment. React 18 with modern UI libraries and color customization features.
+
 This is the frontend application for the Sunset Challenge, a todo list application with color customization features. This project was developed as part of a full-stack developer assessment for Sunset.
 
 ## 🚀 Technologies
