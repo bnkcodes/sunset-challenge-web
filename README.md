@@ -32,7 +32,6 @@ This is the frontend application for the Sunset Challenge, a todo list applicati
 - Color customization for lists
 - Task management within lists
 - Responsive design
-- Real-time updates
 - Loading states and skeletons
 - Toast notifications
 - Form validation
@@ -140,4 +139,10 @@ The application is available at: [https://sunset-challenge-web.vercel.app](https
 
 ## 📝 License
 
-This project is part of the Sunset Challenge assessment.
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
+
+## 🔄 Navigation
+
+- [Back to Top](#sunset-challenge---frontend)
+- [Root Documentation](../README.md)
+- [Backend Documentation](../sunset-challenge-api/README.md)
